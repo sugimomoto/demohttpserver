@@ -17,6 +17,12 @@ import com.sun.net.httpserver.HttpServer;
 
 public class MyHandler implements HttpHandler {
 
+    Authorization auth;
+
+    public MyHandler(Authorization auth) {
+        this.auth = auth;
+    }
+
     /*
     http://localhost:33333/?code=XXXXX&state=12345
     */
@@ -28,8 +34,8 @@ public class MyHandler implements HttpHandler {
 
         Map<String, String> params = getParamMap(exchange.getRequestURI().getQuery());
 
-        String authorizationCode = params.get("code");
-        String state = params.get("state");
+        auth.setCode(params.get("code"));
+        auth.setState(params.get("state"));
 
         exchange.sendResponseHeaders(200, response.length());
         OutputStream os = exchange.getResponseBody();

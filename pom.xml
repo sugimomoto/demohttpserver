@@ -30,8 +30,6 @@
       <groupId>sugimomoto</groupId>
       <artifactId>withings_sample</artifactId>
       <version>1.0-SNAPSHOT</version>
-      <scope>system</scope>
-      <systemPath>C:/Work/Projects/Java/withings_sample/target/withings_sample-1.0-SNAPSHOT.jar</systemPath>
     </dependency>
   </dependencies>
 
