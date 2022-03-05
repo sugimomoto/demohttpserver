@@ -32,7 +32,7 @@ public class MyHandler implements HttpHandler {
 
         String response =  "Your request " + exchange.getRequestURI();
 
-        Map<String, String> params = getParamMap(exchange.getRequestURI().getQuery());
+        Map<String, String> params = Util.getParamMap(exchange.getRequestURI().getQuery());
 
         auth.setCode(params.get("code"));
         auth.setState(params.get("state"));
@@ -43,19 +43,4 @@ public class MyHandler implements HttpHandler {
         os.close();
     }
 
-    private Map<String, String> getParamMap(String query) {
-
-        if(query == null || query.isBlank()){
-            return Collections.emptyMap();
-        }
-
-        Map<String,String> results = new HashMap<>();
-
-        for(String param : query.split("&")){
-            String[] entry = param.split("=");
-            results.put(entry[0], entry[1]);
-        }
-
-        return results;
-    }
 }
